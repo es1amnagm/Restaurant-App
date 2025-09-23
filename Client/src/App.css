@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-text-primary: #d44211;
+}
+
+
+
+@layer base{
+    body{
+        font-family: "Cairo";
+        background-color: #f8f6f6;
+    }
+    header{
+        @apply fixed top-0 right-0 left-0 h-18 border-b-1 border-[var(--color-text-primary)] 
+        flex justify-between px-8
+    }
+    main{
+        @apply px-10 pt-25
+    }
+
+    h1{
+        @apply text-3xl font-bold
+    }
+    
+
+}
+
+@layer components{
+    .header-button{
+        @apply bg-[#d44211] text-white font-semibold px-4 py-2 rounded-3xl hover:bg-[#d44211]/80 active:opacity-50 cursor-pointer
+    }
+
+    .header-nav{
+       @apply  font-medium text-[#221510] hover:text-[#d44211] active:opacity-50 cursor-pointer
+    }
+}
+
