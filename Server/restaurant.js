@@ -1,4 +1,4 @@
- const dotenv=require('dotenv');
+  const dotenv=require('dotenv');
  const express=require('express');
  const mongoose=require('mongoose');
  const app=express();
@@ -16,13 +16,12 @@ dotenv.config();
 // Enable CORS for frontend dev server
 app.use(cors({ origin: true, credentials: true }));
 
+ 
 
+mongoose.connect(process.env.MONGO_URL);
+  
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
-
+ 
 // first page should appear for all users to decision where will you go 
 app.use("/", homePageRoute);
  
@@ -40,6 +39,6 @@ app.use("/client", clientRoute);
 
 
 
- app.listen(process.env.PORT, ()=>{
+ app.listen(3000, ()=>{
     console.log("server is running on http://localhost:3000");  
  })
