@@ -1,13 +1,16 @@
-const { userPage } = require("../Controllers/Client/clientController");
-const express = require("express");
+const signIn = require("../Controllers/Client/signIn");
+const router = require("express").Router();
 const orderOperations = require("../Controllers/Client/OrderOperations");
-const router = express.Router();
+const clientController = require("../Controllers/Client/clientController");
+const register = require('../Controllers/Client/register');
 
-router.route("/").get(userPage);
+router.route("/register").post(register);
 
-router
-  .route("/makeOrder")
-  .post(orderOperations.createOrder)
-  router.route('/makeOrder/:orderId').delete(orderOperations.cancelOrder);
+router.route("/login").post(signIn.NormalSignIn);
+router.route("/client-google-signin").get(signIn.signInWithGoogle);
+router.route("/google-callback").get(signIn.googleCallback);
+
+router.route("/makeOrder").post(orderOperations.createOrder);
+router.route("/makeOrder/:orderId").delete(orderOperations.cancelOrder);
 
 module.exports = router;
